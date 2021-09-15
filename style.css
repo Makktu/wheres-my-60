@@ -17,3 +17,25 @@ body {
     background-color: rgb(19, 17, 17);
     color: rgb(236, 222, 222);
 }
+
+h1 {
+    font-size: 3rem;
+}
+
+button {
+    font-size: 2rem;
+    cursor: pointer;
+    background-color: cadetblue;
+}
+
+button:hover {
+    background-color: aqua;
+    color: black;
+}
+
+.message-area {
+    height: 100px;
+    width: 100px;
+    background-color: cornsilk;
+    color: black;
+}
