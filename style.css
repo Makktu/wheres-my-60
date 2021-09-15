@@ -19,11 +19,11 @@ body {
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 button {
-    font-size: 2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     background-color: cadetblue;
 }
@@ -36,6 +36,17 @@ button:hover {
 .message-area {
     height: 100px;
     width: 100px;
-    background-color: cornsilk;
-    color: black;
+    /* background-color: cornsilk;
+    color: black; */
+}
+
+img {
+    width: 30px;
+    height: 30px;
+    /* float: right; */
+    margin-left: 5px;
+}
+
+footer {
+    font-size: 0.6rem;
 }
