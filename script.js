@@ -54,3 +54,13 @@ getButton.addEventListener("click", wheresMySixty);
 // https://data.bus-data.dft.gov.uk/api/v1/datafeed?boundingBox=-1.42625%2C%2052.36964%2C%20-1.59502%2C%2052.45649&operatorRef=SCNH&lineRef=60
 
 // positionstack API : 0cfcfb7d42c2c2f3e7b21223952129ef
+
+// TOP-LEFT: 52.45543, -1.58546
+// TOP-RIGHT: 52.45649, -1.42625
+// BOTTOM-LEFT: 52.36964, -1.59502
+// BOTTOM-RIGHT: 52.38044, -1.42509
+
+// QUERY:
+// -1.42625, 52.36964, -1.59502, 52.45649
+
+// 52.3843575 -1.5671809
