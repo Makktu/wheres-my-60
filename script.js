@@ -2,7 +2,9 @@
 
 function wheresMySixty() {
     console.log("Starting...");
-    fetch("/response_1631723272107.xml")
+    const url =
+        "https://cors-anywhere.herokuapp.com/https://data.bus-data.dft.gov.uk/api/v1/datafeed?boundingBox=-1.42625%2C%2052.36964%2C%20-1.59502%2C%2052.45649&operatorRef=SCNH&lineRef=60&api_key=93b0e2fee16e881a1ccd4a49736d71c44b376744";
+    fetch(url)
         .then((response) => response.text())
         .then((data) => console.log(data));
 }
@@ -20,3 +22,7 @@ getButton.addEventListener("click", wheresMySixty);
 
 // or:
 // https://data.bus-data.dft.gov.uk/api/v1/datafeed/1696/
+
+// OR EVEN:
+
+// https://data.bus-data.dft.gov.uk/api/v1/datafeed?boundingBox=-1.42625%2C%2052.36964%2C%20-1.59502%2C%2052.45649&operatorRef=SCNH&lineRef=60
