@@ -17,10 +17,10 @@ function parseData(data) {
         let time = allBuses[bus].RecordedAtTime;
         console.log(lat, lon, time);
         fetch(
-            `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}`
+            `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
         )
             .then((response) => response.text())
-            .then((addr) => (location += addr.street + "///"));
+            .then((addr) => console.log(addr));
         // location += addr.street + "///";
     }
     console.log(location);
@@ -64,3 +64,7 @@ getButton.addEventListener("click", wheresMySixty);
 // -1.42625, 52.36964, -1.59502, 52.45649
 
 // 52.3843575 -1.5671809
+
+// parse this!
+
+// {"data":[{"latitude":52.443951,"longitude":-1.491083,"type":"venue","distance":0.062,"name":"Tesco Ricoh Arena","number":null,"postal_code":null,"street":null,"confidence":0.8,"region":"West Midlands","region_code":null,"county":"Coventry","locality":"Coventry","administrative_area":null,"neighbourhood":null,"country":"United Kingdom","country_code":"GBR","continent":"Europe","label":"Tesco Ricoh Arena, Coventry, England, United Kingdom"}]}
