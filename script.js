@@ -1,6 +1,7 @@
 "use strict";
 
 function parseData(data) {
+    console.log(data);
     const jsonData = xmlToJson.parse(data);
     const allBuses =
         jsonData.Siri.ServiceDelivery.VehicleMonitoringDelivery.VehicleActivity;
@@ -8,7 +9,7 @@ function parseData(data) {
 
     let location = "";
 
-    // get times of recording
+    // get locations and times of recording
     for (let bus in allBuses) {
         let lat =
             allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Latitude;
