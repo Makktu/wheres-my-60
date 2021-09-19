@@ -5,29 +5,35 @@ function parseData(data) {
     const jsonData = xmlToJson.parse(data);
     const allBuses =
         jsonData.Siri.ServiceDelivery.VehicleMonitoringDelivery.VehicleActivity;
-    console.log(allBuses);
+    console.log(jsonData);
 
     let location = "";
 
     // get locations and times of recording
     for (let bus in allBuses) {
+        // if (allBuses[bus].)
+        console.log(allBuses[bus].MonitoredVehicleJourney.DirectionRef);
+        console.log(allBuses[bus].MonitoredVehicleJourney.Bearing);
+        console.log(allBuses[bus].MonitoredVehicleJourney.DestinationRef);
         let lat =
             allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Latitude;
         let lon =
             allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
         let time = allBuses[bus].RecordedAtTime;
         console.log(lat, lon, time);
-        window.open(`http://www.google.com/maps/place/${lat},${lon}`);
+        // window.open(`http://www.google.com/maps/place/${lat},${lon}`);
+        // messageArea.innerHTML = `<img src="https://maps.google.com/maps/api/staticmap?center=${lat},${lon}&zoom=8&size=400x300&sensor=false" style="width: 400px; height: 400px;" />`;
 
         fetch(
             `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
         )
             .then((response) => response.text())
             .then((addr) => console.log(addr));
+        // .then((addr) => console.log(addr.latitude));
         // location += addr.street + "///";
     }
     console.log(location);
-    // messageArea.textContent = location;
+    messageArea.textContent = location;
 }
 
 function wheresMySixty() {
@@ -41,9 +47,9 @@ function wheresMySixty() {
 
 const messageArea = document.querySelector(".message-area");
 
-const getButton = document.querySelector(".get-btn");
+const getButtonWork = document.querySelector(".to-work");
 
-getButton.addEventListener("click", wheresMySixty);
+getButtonWork.addEventListener("click", wheresMySixty);
 
 // https://www.stagecoachbus.com/routes/midlands/60/warwick-university-arena-retail-park/xlao060.i
 
