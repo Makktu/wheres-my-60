@@ -32,7 +32,7 @@ body {
 }
 
 #heading {
-    font-size: 2.7rem;
+    font-size: 2rem;
 }
 
 .message-area {
@@ -45,7 +45,7 @@ body {
 }
 
 footer {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     bottom: 0;
 }
 
@@ -88,3 +88,5 @@ footer {
 a {
     color: yellowgreen;
 }
+
+/* media query for smaller/larger screens required  */
