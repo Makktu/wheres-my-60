@@ -11,20 +11,19 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* height: 100vh; */
-    /* overflow: hidden; */
-    /* my dark styling */
-    background-color: rgb(11, 13, 46);
+
+    background-color: rgb(21, 23, 58);
     color: rgb(179, 15, 56);
 }
 
 .container {
-    width: 600px;
-    height: 100vh;
+    width: 350px;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    /* border: 3px yellow solid; */
     /* margin-top: 30vh; */
 }
 
@@ -33,7 +32,7 @@ body {
 }
 
 #heading {
-    font-size: 4rem;
+    font-size: 2.7rem;
 }
 
 .message-area {
@@ -42,13 +41,7 @@ body {
     /* margin-left: 0px; */
     /* background-color: cornsilk;
     color: black; */
-}
-
-.sixty-pic {
-    width: 70px;
-    height: 70px;
-    /* float: right; */
-    margin-left: 5px;
+    margin: 10px 0px;
 }
 
 footer {
@@ -59,12 +52,9 @@ footer {
 .btn-area {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
-
-/* .map-holder {
-    width: 150px;
-    height: 250px;
-} */
 
 .msg {
     font-size: 1rem;
@@ -85,13 +75,8 @@ footer {
     text-align: center;
 }
 
-/* #map {
-    height: 40vh;
-    width: 90vw;
-} */
-
 #question-mark {
-    font-size: 10rem;
+    font-size: 6rem;
     color: yellowgreen;
 }
 
