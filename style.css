@@ -69,6 +69,7 @@ footer {
 .msg {
     font-size: 1rem;
     margin: 20px 30px;
+    text-align: center;
 }
 
 .to-work {
@@ -81,6 +82,7 @@ footer {
 
 .fa-bus {
     cursor: pointer;
+    text-align: center;
 }
 
 /* #map {
@@ -96,4 +98,8 @@ footer {
 .info-line {
     color: white;
     font-size: 1.2rem;
+}
+
+a {
+    color: yellowgreen;
 }
