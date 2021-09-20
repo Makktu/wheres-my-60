@@ -31,19 +31,20 @@ body {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 4rem;
 }
 
 .message-area {
-    height: 500px;
-    width: 200px;
+    /* height: 500px;
+    width: 200px; */
+    /* margin-left: 0px; */
     /* background-color: cornsilk;
     color: black; */
 }
 
 .sixty-pic {
-    width: 30px;
-    height: 30px;
+    width: 70px;
+    height: 70px;
     /* float: right; */
     margin-left: 5px;
 }
@@ -78,4 +79,14 @@ footer {
 
 .fa-bus {
     cursor: pointer;
+}
+
+#map {
+    height: 40vh;
+    width: 90vw;
+}
+
+#question-mark {
+    font-size: 15rem;
+    color: yellowgreen;
 }
