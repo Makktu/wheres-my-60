@@ -1,13 +1,20 @@
 "use strict";
 
-function displayMap() {
-    let lat = 52.38857572521704; // 52.38937773625854
-    let lon = -1.462076773668885; // -1.4575123786926272
-    let time = "15:14:32";
+function displayMap(lat, lon, time) {
+    // messageArea.textContent = `At ${time} your 60 is here:`;
+    // let lat = 52.38857572521704; // 52.38937773625854
+    // let lon = -1.462076773668885; // -1.4575123786926272
+    // let time = "15:14:32";
     // messageArea.classList.add("expand");
     // infoLine.innerText = `At ${time} your 60 is here:`;
-    messageArea.innerHTML = `<iframe width="320" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.464309096336365%2C52.38675529520704%2C-1.4572280645370486%2C52.389665835140555&amp;layer=mapnik&amp;marker=${lat}%2C${lon}" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=52.38792&amp;mlon=-1.46105#map=18/52.38792/-1.46105">View Larger Map</a></small>`;
-    messageArea.style.cssText = "transition: 2s ease;";
+    messageArea.innerHTML = `<iframe width="320" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
+        lon - 0.0075
+    }%2C${lat - 0.0075}%2C${lon + 0.0075}%2C${
+        lat + 0.0075
+    }&amp;layer=mapnik&amp;marker=${lat}%2C${lon}" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=52.38792&amp;mlon=-1.46105#map=18/52.38792/-1.46105">View Larger Map</a></small>`;
+
+    // bbox=-1.464309096336365%2C52.38675529520704%2C-1.4572280645370486%2C52.389665835140555
+    // bbox=${lon-0.01}%2C{lat-0.01}%2C${lon+0.01}%2C{lat+0.01}
 
     // lon-0.01 / lat + 0.01
 
@@ -17,8 +24,8 @@ function displayMap() {
 }
 
 function parseData(data) {
-    displayMap();
-    return;
+    // displayMap();
+    // return;
     console.log(data);
     const jsonData = xmlToJson.parse(data);
     const allBuses =
@@ -31,33 +38,29 @@ function parseData(data) {
     // get locations and times of recording
     for (let bus in allBuses) {
         // console.log(`-----${bus}: `, allBuses[bus]);
-        console.log(allBuses[bus].MonitoredVehicleJourney.DirectionRef);
-        console.log(allBuses[bus].MonitoredVehicleJourney.Bearing);
-        console.log(allBuses[bus].MonitoredVehicleJourney.DestinationRef);
+        if (allBuses[bus].MonitoredVehicleJourney.DirectionRef === "INBOUND") {
+            // console.log(allBuses[bus].MonitoredVehicleJourney.Bearing);
+            // console.log(allBuses[bus].MonitoredVehicleJourney.DestinationRef);
 
-        let lat =
-            allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Latitude;
-        let lon =
-            allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
-        let time = allBuses[bus].RecordedAtTime;
-        console.log(lat, lon, time);
+            let lat =
+                allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Latitude;
+            let lon =
+                allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
+            let time = allBuses[bus].RecordedAtTime;
+            displayMap(lat, lon, time);
+            return;
+        }
         // window.open(`http://www.google.com/maps/place/${lat},${lon}`);
 
-        fetch(
-            `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
-        )
-            .then((response) => response.text())
-            .then((addr) => console.log(addr));
+        // fetch(
+        //     `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
+        // )
+        //     .then((response) => response.text())
+        //     .then((addr) => console.log(addr));
         // .then((addr) => console.log(addr.latitude));
         // location += addr.street + "///";
     }
     console.log(location);
-    //     // messageArea.textContent = location;
-
-    // let lat = 53;
-    // let lon = -1;
-
-    // updateMap(lat, lon);
 }
 
 function wheresMySixty() {
@@ -90,3 +93,5 @@ getButtonWork.addEventListener("click", wheresMySixty);
 // OR EVEN:
 
 // https://data.bus-data.dft.gov.uk/api/v1/datafeed?boundingBox=-1.42625%2C%2052.36964%2C%20-1.59502%2C%2052.45649&operatorRef=SCNH&lineRef=60
+
+// -1.5815292657931508,52.37233529793553,-1.424974097483931352.456935783199775
