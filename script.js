@@ -1,15 +1,10 @@
 "use strict";
 
-function printLoc(lat, lon) {
-    fetch(
-        `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
-    )
-        .then((response) => response.text())
-        .then((addr) => {
-            let newAddr = JSON.parse(addr);
-            let locationOfBus = newAddr.data[0].name;
-            infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
-        });
+function printLoc(addr) {
+    let newAddr = JSON.parse(addr);
+    // console.log(newAddr);
+    let locationOfBus = newAddr.data[0].name;
+    infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
 }
 
 function displayMap(lat, lon, time) {
@@ -39,7 +34,11 @@ function parseData(data) {
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
             displayMap(lat, lon, time);
-            printLoc(lat, lon);
+            fetch(
+                `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
+            )
+                .then((response) => response.text())
+                .then((addr) => printLoc(addr));
 
             return;
         }
@@ -55,6 +54,7 @@ function wheresMySixty() {
         .then((response) => response.text())
         .then((data) => parseData(data));
 }
+
 let travellingDirection = "";
 
 const messageArea = document.querySelector(".message-area");
