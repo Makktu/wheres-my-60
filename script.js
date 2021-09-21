@@ -5,6 +5,7 @@ function printLoc(addr) {
     let locationOfBus = newAddr.data[0].name;
     infoLine.textContent = "";
     infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
+    messageArea.textContent = locationOfBus;
 }
 
 function displayMap(lat, lon, time) {
