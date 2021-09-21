@@ -3,7 +3,7 @@
 function printLoc(addr) {
     let newAddr = JSON.parse(addr);
     let locationOfBus = newAddr.data[0].name;
-    infoLine.innerHTML = `<p>Your 60 is at: ${locationOfBus}</p>`;
+    infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
 }
 
 function displayMap(lat, lon, time) {
