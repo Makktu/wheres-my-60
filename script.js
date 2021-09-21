@@ -3,7 +3,7 @@
 function printLoc(addr) {
     let newAddr = JSON.parse(addr);
     let locationOfBus = newAddr.data[0].name;
-    infoLine.innerHTML = `Your 60 is at: ${locationOfBus}`;
+    infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
 }
 
 function displayMap(lat, lon, time) {
@@ -39,6 +39,9 @@ function parseData(data) {
                 .then((response) => response.text())
                 .then((addr) => printLoc(addr));
             return;
+        } else {
+            messageArea.textContent = "";
+            infoLine.textContent = "No bus currently in service.";
         }
     }
 }
