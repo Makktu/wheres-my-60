@@ -8,9 +8,9 @@ function displayMap(lat, lon, time) {
     // messageArea.classList.add("expand");
     // infoLine.innerText = `At ${time} your 60 is here:`;
     messageArea.innerHTML = `<iframe width="320" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
-        lon - 0.0075
-    }%2C${lat - 0.0075}%2C${lon + 0.0075}%2C${
-        lat + 0.0075
+        lon - 0.0015
+    }%2C${lat - 0.0015}%2C${lon + 0.0015}%2C${
+        lat + 0.0015
     }&amp;layer=mapnik&amp;marker=${lat}%2C${lon}" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=52.38792&amp;mlon=-1.46105#map=18/52.38792/-1.46105">View Larger Map</a></small>`;
 
     // bbox=-1.464309096336365%2C52.38675529520704%2C-1.4572280645370486%2C52.389665835140555
