@@ -2,7 +2,7 @@
 
 function printLoc(addr) {
     let newAddr = JSON.parse(addr);
-    infoLine.textContent = `Your 60 is at ${newAddr.data[0].name}`;
+    infoLine.innerHTML = `<p>Your 60 is at:<br>${newAddr.data[0].name}</p>`;
 }
 
 function displayMap(lat, lon, time) {

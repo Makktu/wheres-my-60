@@ -12,7 +12,7 @@ body {
     align-items: center;
     justify-content: center;
 
-    background-color: #af527d;
+    background-color: rgb(0, 0, 0);
     color: rgb(248, 246, 247);
 }
 
@@ -36,7 +36,7 @@ body {
 }
 
 .message-area {
-    height: 390px;
+    height: 380px;
     width: 320px;
     /* margin-left: 0px; */
     /* background-color: cornsilk;
@@ -46,10 +46,10 @@ body {
 
 .info {
     /* height: 1.1rem; */
-    width: 400px;
+    /* width: 400px; */
     color: rgb(246, 248, 242);
     text-align: center;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
 }
 
 footer {
@@ -71,11 +71,11 @@ footer {
 }
 
 .to-work {
-    color: rgb(14, 34, 34);
+    color: rgb(204, 224, 93);
 }
 
 .to-home {
-    color: rgb(36, 19, 99);
+    color: rgb(18, 179, 45);
 }
 
 .fa-bus {
