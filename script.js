@@ -60,7 +60,7 @@ const getButtonWork = document.querySelector(".to-work");
 
 const getButtonHome = document.querySelector(".to-home");
 
-const infoLine = document.querySelector(".info");
+const infoLine = document.getElementById("info");
 
 getButtonWork.addEventListener("click", () => {
     travellingDirection = "INBOUND";

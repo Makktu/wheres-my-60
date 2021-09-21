@@ -40,7 +40,7 @@ body {
     text-align: center;
 }
 
-.info {
+#info {
     height: 1rem;
     width: 400px;
     color: rgb(241, 244, 245);
