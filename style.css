@@ -36,12 +36,16 @@ body {
 }
 
 .message-area {
-    height: 370px;
+    height: 390px;
     width: 320px;
     /* margin-left: 0px; */
     /* background-color: cornsilk;
     color: black; */
     margin: 10px 0px;
+}
+
+.info {
+    color: yellowgreen;
 }
 
 footer {
