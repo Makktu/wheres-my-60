@@ -32,12 +32,13 @@ function parseData(data) {
             let lon =
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
-            displayMap(lat, lon, time);
             fetch(
                 `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
             )
                 .then((response) => response.text())
                 .then((addr) => printLoc(addr));
+            displayMap(lat, lon, time);
+
             return;
         } else {
             messageArea.textContent = "";
