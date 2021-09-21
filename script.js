@@ -4,8 +4,10 @@ function displayMap() {
     let lat = 52.38857572521704; // 52.38937773625854
     let lon = -1.462076773668885; // -1.4575123786926272
     let time = "15:14:32";
-    infoLine.innerText = `At ${time} your 60 is located at:`;
+    // messageArea.classList.add("expand");
+    // infoLine.innerText = `At ${time} your 60 is here:`;
     messageArea.innerHTML = `<iframe width="320" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-1.464309096336365%2C52.38675529520704%2C-1.4572280645370486%2C52.389665835140555&amp;layer=mapnik&amp;marker=${lat}%2C${lon}" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=52.38792&amp;mlon=-1.46105#map=18/52.38792/-1.46105">View Larger Map</a></small>`;
+    messageArea.style.cssText = "transition: 2s ease;";
 
     // lon-0.01 / lat + 0.01
 
@@ -60,6 +62,8 @@ function parseData(data) {
 
 function wheresMySixty() {
     console.log("Starting...");
+    messageArea.textContent = "SEARCHING...";
+    messageArea.style = "color: yellow;";
     const url =
         "https://cors.bridged.cc/https://data.bus-data.dft.gov.uk/api/v1/datafeed?boundingBox=-1.42625%2C%2052.36964%2C%20-1.59502%2C%2052.45649&operatorRef=SCNH&lineRef=60&api_key=93b0e2fee16e881a1ccd4a49736d71c44b376744";
     fetch(url)
@@ -71,7 +75,7 @@ const messageArea = document.querySelector(".message-area");
 
 const getButtonWork = document.querySelector(".to-work");
 
-const infoLine = document.querySelector(".info-line");
+// const infoLine = document.querySelector(".info-line");
 
 getButtonWork.addEventListener("click", wheresMySixty);
 

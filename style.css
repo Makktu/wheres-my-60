@@ -36,8 +36,8 @@ body {
 }
 
 .message-area {
-    /* height: 500px;
-    width: 200px; */
+    height: 370px;
+    width: 320px;
     /* margin-left: 0px; */
     /* background-color: cornsilk;
     color: black; */
@@ -46,7 +46,7 @@ body {
 
 footer {
     font-size: 0.7rem;
-    bottom: 0;
+    margin-top: 40px;
 }
 
 .btn-area {
@@ -76,9 +76,17 @@ footer {
 }
 
 #question-mark {
-    font-size: 6rem;
+    font-size: 13rem;
     color: yellowgreen;
+    text-align: center;
 }
+
+/* #reset {
+    background-color: yellowgreen;
+    border-radius: 10px;
+    width: 200px;
+    font-size: 1.3rem;
+} */
 
 .info-line {
     color: white;
@@ -87,6 +95,12 @@ footer {
 
 a {
     color: yellowgreen;
+}
+
+.expand {
+    height: 320px;
+    width: 350px;
+    transition: all 2s ease out;
 }
 
 /* media query for smaller/larger screens required  */
