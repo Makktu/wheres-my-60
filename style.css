@@ -45,7 +45,10 @@ body {
 }
 
 .info {
+    height: 1.1rem;
+    width: 400px;
     color: yellowgreen;
+    text-align: center;
 }
 
 footer {
@@ -99,12 +102,6 @@ footer {
 
 a {
     color: yellowgreen;
-}
-
-.expand {
-    height: 320px;
-    width: 350px;
-    transition: all 2s ease out;
 }
 
 /* media query for smaller/larger screens required  */
