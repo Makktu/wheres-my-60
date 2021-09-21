@@ -22,7 +22,10 @@ function parseData(data) {
     console.log("2", allBuses);
 
     for (let bus in allBuses) {
-        if (allBuses[bus].MonitoredVehicleJourney.DirectionRef === "INBOUND") {
+        if (
+            allBuses[bus].MonitoredVehicleJourney.DirectionRef ===
+            travellingDirection
+        ) {
             let lat =
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Latitude;
             let lon =
@@ -48,11 +51,22 @@ function wheresMySixty() {
         .then((response) => response.text())
         .then((data) => parseData(data));
 }
+let travellingDirection = "";
 
 const messageArea = document.querySelector(".message-area");
 
 const getButtonWork = document.querySelector(".to-work");
 
+const getButtonHome = document.querySelector(".to-home");
+
 const infoLine = document.querySelector(".info");
 
-getButtonWork.addEventListener("click", wheresMySixty);
+getButtonWork.addEventListener("click", () => {
+    travellingDirection = "INBOUND";
+    wheresMySixty();
+});
+
+getButtonHome.addEventListener("click", () => {
+    travellingDirection = "OUTBOUND";
+    wheresMySixty();
+});
