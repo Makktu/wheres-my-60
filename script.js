@@ -2,17 +2,18 @@
 
 function printLoc(addr) {
     let newAddr = JSON.parse(addr);
-    // console.log(newAddr);
+    console.log(newAddr);
     let locationOfBus = newAddr.data[0].name;
     infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
 }
 
 function displayMap(lat, lon, time) {
-    messageArea.innerHTML = `<iframe width="320" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
+    messageArea.innerHTML = "";
+    messageArea.innerHTML = `<iframe width="320" height="390" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
         lon - 0.0015
     }%2C${lat - 0.0015}%2C${lon + 0.0015}%2C${
         lat + 0.0015
-    }&amp;layer=mapnik&amp;marker=${lat}%2C${lon}" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=52.38792&amp;mlon=-1.46105#map=18/52.38792/-1.46105">View Larger Map</a></small>`;
+    }&amp;layer=mapnik&amp;marker=${lat}%2C${lon}" style="border: 1px solid black"></iframe>`;
 }
 
 function parseData(data) {
@@ -46,8 +47,9 @@ function parseData(data) {
 }
 
 function wheresMySixty() {
-    messageArea.textContent = "SEARCHING...";
-    messageArea.style = "color: yellow;";
+    messageArea.style = "color: white; font-size: 2.2rem;";
+    messageArea.innerHTML =
+        '<br><br><br><i class="fas fa-spinner fa-spin fa-3x fa-fw"></i>';
     const url =
         "https://cors.bridged.cc/https://data.bus-data.dft.gov.uk/api/v1/datafeed?boundingBox=-1.42625%2C%2052.36964%2C%20-1.59502%2C%2052.45649&operatorRef=SCNH&lineRef=60&api_key=93b0e2fee16e881a1ccd4a49736d71c44b376744";
     fetch(url)
