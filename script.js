@@ -3,11 +3,21 @@
 function printLoc(addr) {
     let newAddr = JSON.parse(addr);
     console.log(newAddr);
-    let locationOfBus = newAddr.data[0].name;
-    infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
+    // let locationOfBus = newAddr.data[0].name;
+    // infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
 }
 
 function displayMap(lat, lon, time) {
+    let rightNow = new Date();
+    console.log(rightNow);
+    let theTime = time.substring(
+        time.lastIndexOf("T") + 1,
+        time.lastIndexOf("+") - 3
+    );
+    infoLine.textContent = `At ${theTime} your 60 ${
+        travellingDirection === "INBOUND" ? "to work " : "home "
+    } is here:`;
+
     messageArea.innerHTML = "";
     messageArea.innerHTML = `<iframe width="320" height="390" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
         lon - 0.0015
