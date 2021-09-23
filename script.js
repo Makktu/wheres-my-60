@@ -1,19 +1,21 @@
 "use strict";
 
-function printLoc(addr) {
-    let newAddr = JSON.parse(addr);
-    console.log(newAddr);
-    // let locationOfBus = newAddr.data[0].name;
-    // infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
-}
+// function printLoc(addr) {
+//     let newAddr = JSON.parse(addr);
+//     console.log(newAddr);
+//     let locationOfBus = newAddr.data[0].name;
+//     infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
+// }
 
 function displayMap(lat, lon, time) {
-    let rightNow = new Date();
-    console.log(rightNow);
+    // let rightNow = new Date() WILL NEED TO ADD THIS COME END OF OOCTOBER FOR DAYLIGHT SAVINGS OFFSET
+
     let theTime = time.substring(
         time.lastIndexOf("T") + 1,
         time.lastIndexOf("+") - 3
     );
+    let theHour = parseInt(theTime.substring(0, 2)) + 1;
+    theTime = theHour.toString() + theTime.substring(2);
     infoLine.textContent = `At ${theTime} your 60 ${
         travellingDirection === "INBOUND" ? "to work " : "home "
     } is here:`;
@@ -45,11 +47,11 @@ function parseData(data) {
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
             displayMap(lat, lon, time);
-            fetch(
-                `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
-            )
-                .then((response) => response.text())
-                .then((addr) => printLoc(addr));
+            // fetch(
+            //     `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
+            // )
+            //     .then((response) => response.text())
+            //     .then((addr) => printLoc(addr));
 
             return;
         }
@@ -57,6 +59,7 @@ function parseData(data) {
 }
 
 function wheresMySixty() {
+    infoLine.textContent = "";
     messageArea.style = "color: white; font-size: 2.2rem;";
     messageArea.innerHTML =
         '<br><br><br><i class="fas fa-spinner fa-spin fa-3x fa-fw"></i>';
@@ -65,6 +68,18 @@ function wheresMySixty() {
     fetch(url)
         .then((response) => response.text())
         .then((data) => parseData(data));
+
+    setTimeout(function () {
+        if (!infoLine.textContent) {
+            infoLine.textContent = "Taking too long. Refreshing in 5 secs.";
+        }
+    }, 6000);
+
+    setTimeout(function () {
+        if (!infoLine.textContent) {
+            window.location.reload();
+        }
+    }, 11000);
 }
 
 let travellingDirection = "";
