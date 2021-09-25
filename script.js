@@ -1,20 +1,28 @@
 "use strict";
 
-// function printLoc(addr) {
-//     let newAddr = JSON.parse(addr);
-//     console.log(newAddr);
-//     let locationOfBus = newAddr.data[0].name;
-//     infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
-// }
+function printLoc(addr) {
+    let newAddr = JSON.parse(addr);
+    console.log(newAddr);
+    let locationOfBus = newAddr.data[0].name;
+    infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
+}
 
 function displayMap(lat, lon, time) {
-    // let rightNow = new Date() WILL NEED TO ADD THIS COME END OF OOCTOBER FOR DAYLIGHT SAVINGS OFFSET
+    let rightNow = new Date();
+    rightNow = rightNow.getHours();
+    console.log(rightNow);
 
     let theTime = time.substring(
         time.lastIndexOf("T") + 1,
         time.lastIndexOf("+") - 3
     );
     let theHour = parseInt(theTime.substring(0, 2)) + 1;
+    if (rightNow >= 21 || rightNow <= 5) {
+        infoLine.textContent = "The 60 is not running at this time";
+        messageArea.innerHTML = "";
+        return;
+    }
+
     theTime = theHour.toString() + theTime.substring(2);
     infoLine.textContent = `At ${theTime} your 60 ${
         travellingDirection === "INBOUND" ? "to work " : "home "
@@ -46,6 +54,7 @@ function parseData(data) {
             let lon =
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
+            // ! insert time capture here; might as well skip to next if this is stale info
             displayMap(lat, lon, time);
             // fetch(
             //     `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
