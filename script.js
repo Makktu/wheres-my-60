@@ -98,10 +98,12 @@ const infoLine = document.getElementById("info");
 
 const mapPic = document.querySelector(".map-pic");
 
-mapPic.addEventListener(
-    "click",
-    () => (infoLine.textContent = "Not that bus, Dee...")
-);
+mapPic.addEventListener("click", () => {
+    infoLine.textContent = "Not that one! The yellow or green bus.";
+    setTimeout(function () {
+        infoLine.textContent = "Tap one of the buses at the bottom...";
+    }, 4000);
+});
 
 getButtonWork.addEventListener("click", () => {
     travellingDirection = "INBOUND";
