@@ -19,7 +19,8 @@ function displayMap(lat, lon, time) {
     let theHour = parseInt(theTime.substring(0, 2)) + 1;
     if (rightNow >= 21 || rightNow <= 5) {
         infoLine.textContent = "The 60 is not running at this time";
-        messageArea.innerHTML = "";
+        messageArea.innerHTML =
+            "<div class='map-pic'><img src='img/map-pic.png' /></div>";
         return;
     }
 
@@ -80,15 +81,9 @@ function wheresMySixty() {
 
     setTimeout(function () {
         if (!infoLine.textContent) {
-            infoLine.textContent = "Taking too long. Refreshing in 5 secs.";
+            infoLine.textContent = "This is taking too long. Try it again.";
         }
-    }, 6000);
-
-    setTimeout(function () {
-        if (!infoLine.textContent) {
-            window.location.reload();
-        }
-    }, 11000);
+    }, 8000);
 }
 
 let travellingDirection = "";
@@ -100,6 +95,13 @@ const getButtonWork = document.querySelector(".to-work");
 const getButtonHome = document.querySelector(".to-home");
 
 const infoLine = document.getElementById("info");
+
+const mapPic = document.querySelector(".map-pic");
+
+mapPic.addEventListener(
+    "click",
+    () => (infoLine.textContent = "Not that bus!")
+);
 
 getButtonWork.addEventListener("click", () => {
     travellingDirection = "INBOUND";

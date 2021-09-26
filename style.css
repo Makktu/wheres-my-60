@@ -16,11 +16,14 @@ body {
     color: rgb(108, 220, 235);
 }
 
+img {
+    margin-top: 5rem;
+}
+
 .container {
     width: 350px;
     height: 100vh;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
 }
@@ -33,9 +36,6 @@ body {
 .message-area {
     height: 380px;
     width: 320px;
-    /* margin-left: 0px; */
-    /* background-color: cornsilk;
-    color: black; */
     margin: 10px 0px;
     text-align: center;
 }
@@ -45,8 +45,6 @@ body {
     width: 400px;
     color: rgb(241, 244, 245);
     text-align: center;
-    /* border: 2px yellow solid; */
-    /* margin-bottom: 15px; */
 }
 
 footer {
@@ -83,19 +81,6 @@ footer {
     text-align: center;
 }
 
-#question-mark {
-    font-size: 13rem;
-    color: yellowgreen;
-    text-align: center;
-}
-
-/* #reset {
-    background-color: yellowgreen;
-    border-radius: 10px;
-    width: 200px;
-    font-size: 1.3rem;
-} */
-
 .info-line {
     color: white;
     font-size: 1.2rem;
@@ -104,5 +89,3 @@ footer {
 a {
     color: yellowgreen;
 }
-
-/* media query for smaller/larger screens required  */
