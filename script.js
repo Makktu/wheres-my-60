@@ -100,7 +100,7 @@ const mapPic = document.querySelector(".map-pic");
 
 mapPic.addEventListener(
     "click",
-    () => (infoLine.textContent = "Not that bus!")
+    () => (infoLine.textContent = "Not that bus, Dee...")
 );
 
 getButtonWork.addEventListener("click", () => {
