@@ -19,6 +19,10 @@ function displayMap(lat, lon, time) {
         time.lastIndexOf("+") - 3
     );
     let theHour = parseInt(theTime.substring(0, 2)) + 1;
+    if (assessTime() - theHour > 1) {
+        console.log("CONDITION HIT LINE 22");
+        return;
+    }
     if (assessTime() >= 21 || assessTime() <= 5) {
         infoLine.textContent = "The 60 is not running at this time";
         messageArea.innerHTML =
@@ -33,9 +37,9 @@ function displayMap(lat, lon, time) {
 
     messageArea.innerHTML = "";
     messageArea.innerHTML = `<iframe width="320" height="390" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
-        lon - 0.0015
-    }%2C${lat - 0.0015}%2C${lon + 0.0015}%2C${
-        lat + 0.0015
+        lon - 0.001
+    }%2C${lat - 0.001}%2C${lon + 0.001}%2C${
+        lat + 0.001
     }&amp;layer=mapnik&amp;marker=${lat}%2C${lon}" style="border: 1px solid black"></iframe>`;
 }
 
@@ -48,6 +52,13 @@ function parseData(data) {
     console.log("2", allBuses);
 
     for (let bus in allBuses) {
+        console.log(
+            bus,
+            allBuses[bus].MonitoredVehicleJourney.DirectionRef,
+            allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Latitude,
+            allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude,
+            allBuses[bus].RecordedAtTime
+        );
         if (
             allBuses[bus].MonitoredVehicleJourney.DirectionRef ===
             travellingDirection
@@ -57,10 +68,16 @@ function parseData(data) {
             let lon =
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
-            // ! if (assessTime() - time > 1) continue;
+
             displayMap(lat, lon, time);
             // fetch(
             //     `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
+            // )
+            //     .then((response) => response.text())
+            //     .then((addr) => printLoc(addr));
+            // testFunc(lat, lon);
+            // fetch(
+            //     `https://maps.googleapis.com/maps/api/geocode/JSON?latlng=${lat}, ${lon}&key=AIzaSyBYSkrqigkGOs0NMyMz21huI3opYdANXZQ`
             // )
             //     .then((response) => response.text())
             //     .then((addr) => printLoc(addr));
@@ -83,7 +100,8 @@ function wheresMySixty() {
 
     setTimeout(function () {
         if (!infoLine.textContent) {
-            infoLine.textContent = "This is taking too long. Try it again.";
+            infoLine.textContent =
+                "This is taking too long. There may be a problem.";
         }
     }, 8000);
 }

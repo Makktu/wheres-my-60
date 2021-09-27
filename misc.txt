@@ -32,3 +32,8 @@
     // let time = "15:14:32";
     // messageArea.classList.add("expand");
     // infoLine.innerText = `At ${time} your 60 is here:`;
+
+
+    geocode.xyz API: 362367822771311284416x59591 
+
+    google API: AIzaSyBYSkrqigkGOs0NMyMz21huI3opYdANXZQ
