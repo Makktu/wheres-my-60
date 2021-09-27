@@ -1,5 +1,11 @@
 "use strict";
 
+function assessTime() {
+    let rightNow = new Date();
+    rightNow = rightNow.getHours();
+    return rightNow;
+}
+
 function printLoc(addr) {
     let newAddr = JSON.parse(addr);
     console.log(newAddr);
@@ -8,16 +14,12 @@ function printLoc(addr) {
 }
 
 function displayMap(lat, lon, time) {
-    let rightNow = new Date();
-    rightNow = rightNow.getHours();
-    console.log(rightNow);
-
     let theTime = time.substring(
         time.lastIndexOf("T") + 1,
         time.lastIndexOf("+") - 3
     );
     let theHour = parseInt(theTime.substring(0, 2)) + 1;
-    if (rightNow >= 21 || rightNow <= 5) {
+    if (assessTime() >= 21 || assessTime() <= 5) {
         infoLine.textContent = "The 60 is not running at this time";
         messageArea.innerHTML =
             "<div class='map-pic'><img src='img/map-pic.png' /></div>";
@@ -55,7 +57,7 @@ function parseData(data) {
             let lon =
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
-            // ! insert time capture here; might as well skip to next if this is stale info
+            // ! if (assessTime() - time > 1) continue;
             displayMap(lat, lon, time);
             // fetch(
             //     `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
@@ -99,7 +101,7 @@ const infoLine = document.getElementById("info");
 const mapPic = document.querySelector(".map-pic");
 
 mapPic.addEventListener("click", () => {
-    infoLine.textContent = "Not that one! The yellow or green bus.";
+    infoLine.textContent = "Not that one...";
     setTimeout(function () {
         infoLine.textContent = "Tap one of the buses at the bottom...";
     }, 4000);
