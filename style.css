@@ -27,12 +27,16 @@ img {
     display: flex;
     align-items: center;
     flex-direction: column;
+    font-weight: bold;
 }
 
 #heading {
     width: 90vw;
+    height: 110px;
     text-align: center;
-    font-size: 2.1rem;
+    font-size: 2.7rem;
+    line-height: 110px;
+    position: relative;
     margin-top: 10px;
     background-color: rgb(17, 166, 224);
     color: rgb(251, 252, 249);
@@ -48,10 +52,11 @@ img {
 
 #info {
     height: 1rem;
-    width: 400px;
+    width: 90vw;
     /* color: rgb(232, 238, 240); */
     text-align: center;
     margin-top: 3px;
+    border-radius: 20px;
 }
 
 footer {
@@ -70,14 +75,16 @@ footer {
     background-color: rgb(17, 166, 224);
     border-radius: 20px;
     width: 90vw;
-    padding: 10px;
+    height: 110px;
+    /* padding: 10px; */
     color: white;
 }
 
 .msg {
-    font-size: 1rem;
-    margin: 10px 30px;
+    font-size: 1.7rem;
     text-align: center;
+    justify-content: center;
+    margin: 0px 20px;
 }
 
 /* .to-work {
