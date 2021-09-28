@@ -22,7 +22,7 @@ img {
 }
 
 .container {
-    width: 350px;
+    width: 360px;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -44,8 +44,8 @@ img {
 }
 
 .message-area {
-    height: 380px;
-    width: 320px;
+    height: 420px;
+    width: 350px;
     margin: 8px 0px;
     text-align: center;
 }

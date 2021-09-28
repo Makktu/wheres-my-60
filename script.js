@@ -36,7 +36,7 @@ function displayMap(lat, lon, time) {
     } is here:`;
 
     messageArea.innerHTML = "";
-    messageArea.innerHTML = `<iframe width="320" height="390" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
+    messageArea.innerHTML = `<iframe width="340" height="420" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
         lon - 0.001
     }%2C${lat - 0.001}%2C${lon + 0.001}%2C${
         lat + 0.001
