@@ -5,6 +5,7 @@
 }
 
 body {
+    /* background-image: url("img/blue_abstract_stone_pattern_tileable.jpg"); */
     font-family: "Roboto", sans-serif;
     display: flex;
     margin: 0;
@@ -12,12 +13,12 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: rgb(7, 7, 7);
-    color: rgb(67, 185, 185);
+    background-color: rgb(243, 239, 239);
+    color: rgb(15, 15, 15);
 }
 
 img {
-    margin-top: 5rem;
+    /* margin-top: 5px; */
 }
 
 .container {
@@ -29,22 +30,28 @@ img {
 }
 
 #heading {
+    width: 90vw;
+    text-align: center;
     font-size: 2.1rem;
-    margin-top: 40px;
+    margin-top: 10px;
+    background-color: rgb(17, 166, 224);
+    color: rgb(251, 252, 249);
+    border-radius: 20px;
 }
 
 .message-area {
     height: 380px;
     width: 320px;
-    margin: 10px 0px;
+    margin: 8px 0px;
     text-align: center;
 }
 
 #info {
     height: 1rem;
     width: 400px;
-    color: rgb(232, 238, 240);
+    /* color: rgb(232, 238, 240); */
     text-align: center;
+    margin-top: 3px;
 }
 
 footer {
@@ -60,6 +67,11 @@ footer {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    background-color: rgb(17, 166, 224);
+    border-radius: 20px;
+    width: 90vw;
+    padding: 10px;
+    color: white;
 }
 
 .msg {
@@ -68,13 +80,13 @@ footer {
     text-align: center;
 }
 
-.to-work {
-    color: rgb(204, 224, 93);
+/* .to-work {
+    color: rgb(102, 25, 247);
 }
 
 .to-home {
-    color: rgb(18, 179, 45);
-}
+    color: rgb(24, 231, 73);
+} */
 
 .fa-bus {
     cursor: pointer;
@@ -87,5 +99,5 @@ footer {
 }
 
 a {
-    color: yellowgreen;
+    color: rgb(75, 12, 192);
 }

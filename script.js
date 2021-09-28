@@ -89,7 +89,7 @@ function parseData(data) {
 
 function wheresMySixty() {
     infoLine.textContent = "";
-    messageArea.style = "color: white; font-size: 2.5rem;";
+    messageArea.style = "font-size: 2.5rem;";
     messageArea.innerHTML =
         '<br><br><i class="fas fa-spinner fa-spin fa-3x fa-fw"></i>';
     const url =
