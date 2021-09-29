@@ -5,7 +5,6 @@
 }
 
 body {
-    /* background-image: url("img/blue_abstract_stone_pattern_tileable.jpg"); */
     font-family: "Roboto", sans-serif;
     display: flex;
     margin: 0;
@@ -15,10 +14,6 @@ body {
     overflow: hidden;
     background-color: rgb(243, 239, 239);
     color: rgb(15, 15, 15);
-}
-
-img {
-    /* margin-top: 5px; */
 }
 
 .container {
@@ -32,10 +27,10 @@ img {
 
 #heading {
     width: 90vw;
-    height: 110px;
+    height: 125px;
     text-align: center;
     font-size: 2.25rem;
-    line-height: 110px;
+    line-height: 125px;
     position: relative;
     margin-top: 10px;
     background-color: rgb(17, 166, 224);
@@ -53,7 +48,6 @@ img {
 #info {
     height: 1rem;
     width: 90vw;
-    /* color: rgb(232, 238, 240); */
     text-align: center;
     margin-top: 3px;
     border-radius: 20px;
@@ -61,9 +55,9 @@ img {
 
 footer {
     font-size: 0.5rem;
-    /* margin-top: 10px; */
     position: fixed;
     bottom: 0;
+    left: 0;
 }
 
 .btn-area {
@@ -71,11 +65,11 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin-top: 10px;
+    margin-top: 2px;
     background-color: rgb(17, 166, 224);
     border-radius: 20px;
     width: 90vw;
-    height: 110px;
+    height: 125px;
     color: white;
 }
 
@@ -86,24 +80,32 @@ footer {
     margin: 0px 25px;
 }
 
-/* .to-work {
-    color: rgb(102, 25, 247);
-}
-
-.to-home {
-    color: rgb(24, 231, 73);
-} */
-
 .fa-bus {
     cursor: pointer;
     text-align: center;
 }
 
-.info-line {
-    color: rgb(248, 245, 245);
-    font-size: 1.2rem;
-}
-
 a {
     color: rgb(75, 12, 192);
+}
+
+#toggle-colors {
+    cursor: pointer;
+    width: 80px;
+    height: 20px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(8, 8, 8);
+    color: white;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+/* ALL NON-MOBILE SCREENS BELOW */
+
+@media only screen and (min-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
 }
