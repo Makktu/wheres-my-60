@@ -9,8 +9,10 @@ function loadCSS() {
                 "beforeend",
                 "<link id='dark-mode' rel='stylesheet' href='darkcss.css' />"
             );
+        toggleDark.textContent = "LIGHT";
     } else {
         darkMode.parentNode.removeChild(darkMode);
+        toggleDark.textContent = "DARK";
     }
 }
 
