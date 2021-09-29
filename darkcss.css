@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: rgb(12, 0, 0);
+    color: rgb(250, 245, 245);
+}
+
+.container {
+    width: 360px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+#heading {
+    width: 90vw;
+    height: 125px;
+    text-align: center;
+    font-size: 2.25rem;
+    line-height: 125px;
+    position: relative;
+    margin-top: 10px;
+    background-color: rgb(17, 166, 224);
+    color: rgb(251, 252, 249);
+    border-radius: 20px;
+}
+
+.message-area {
+    height: 420px;
+    width: 350px;
+    margin: 8px 0px;
+    text-align: center;
+}
+
+#info {
+    height: 1rem;
+    width: 90vw;
+    text-align: center;
+    margin-top: 3px;
+    border-radius: 20px;
+}
+
+footer {
+    font-size: 0.5rem;
+    position: fixed;
+    bottom: 0;
+}
+
+.btn-area {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2px;
+    background-color: rgb(17, 166, 224);
+    border-radius: 20px;
+    width: 90vw;
+    height: 125px;
+    color: white;
+}
+
+.msg {
+    font-size: 1.5rem;
+    text-align: center;
+    justify-content: center;
+    margin: 0px 25px;
+}
+
+.fa-bus {
+    cursor: pointer;
+    text-align: center;
+}
+
+a {
+    color: rgb(176, 212, 16);
+}
+
+#toggle-colors {
+    cursor: pointer;
+    width: 80px;
+    height: 20px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(250, 245, 245);
+    color: rgb(12, 12, 12);
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+/* ALL NON-MOBILE SCREENS BELOW */
+
+@media only screen and (min-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+}
