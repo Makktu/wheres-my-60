@@ -1,5 +1,19 @@
 "use strict";
 
+function loadCSS() {
+    let darkMode = document.getElementById("dark-mode");
+    if (!darkMode) {
+        document
+            .getElementsByTagName("head")[0]
+            .insertAdjacentHTML(
+                "beforeend",
+                "<link id='dark-mode' rel='stylesheet' href='darkcss.css' />"
+            );
+    } else {
+        darkMode.parentNode.removeChild(darkMode);
+    }
+}
+
 function assessTime() {
     let rightNow = new Date();
     rightNow = rightNow.getHours();
@@ -26,7 +40,7 @@ function displayMap(lat, lon, time) {
     if (assessTime() >= 21 || assessTime() <= 5) {
         infoLine.textContent = "The 60 is not running at this time";
         messageArea.innerHTML =
-            "<div class='map-pic'><img src='img/map-pic.png' /></div>";
+            "<div class='map-pic'><img src='img/newer-map-pic.png' /></div>";
         return;
     }
 
@@ -108,6 +122,8 @@ function wheresMySixty() {
 
 let travellingDirection = "";
 
+const toggleDark = document.getElementById("toggle-colors");
+
 const messageArea = document.querySelector(".message-area");
 
 const getButtonWork = document.querySelector(".to-work");
@@ -124,6 +140,8 @@ mapPic.addEventListener("click", () => {
         infoLine.textContent = "Tap one of the buses at the bottom...";
     }, 4000);
 });
+
+toggleDark.addEventListener("click", loadCSS);
 
 getButtonWork.addEventListener("click", () => {
     travellingDirection = "INBOUND";
