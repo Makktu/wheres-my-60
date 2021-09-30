@@ -1,5 +1,51 @@
 "use strict";
 
+// var result = document.getElementById("json-result");
+const Http = new XMLHttpRequest();
+function getLocation(lat, lon) {
+    var bdcApi = "https://api.bigdatacloud.net/data/reverse-geocode-client";
+
+    bdcApi =
+        bdcApi +
+        "?latitude=" +
+        lat +
+        "&longitude=" +
+        lon +
+        "&localityLanguage=en";
+    getApi(bdcApi);
+    // navigator.geolocation.getCurrentPosition(
+    //     (position) => {
+    //         bdcApi =
+    //             bdcApi +
+    //             "?latitude=" +
+    //             lat +
+    //             "&longitude=" +
+    //             lon +
+    //             "&localityLanguage=en";
+    //         getApi(bdcApi);
+    //     },
+    //     (err) => {
+    //         getApi(bdcApi);
+    //     },
+    //     {
+    //         enableHighAccuracy: true,
+    //         timeout: 5000,
+    //         maximumAge: 0,
+    //     }
+    // );
+}
+function getApi(bdcApi) {
+    Http.open("GET", bdcApi);
+    Http.send();
+    Http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    };
+}
+
+// *********************************************
+
 function loadCSS() {
     let darkMode = document.getElementById("dark-mode");
     if (!darkMode) {
@@ -86,18 +132,7 @@ function parseData(data) {
             let time = allBuses[bus].RecordedAtTime;
 
             displayMap(lat, lon, time);
-            // fetch(
-            //     `http://api.positionstack.com/v1/reverse?access_key=0cfcfb7d42c2c2f3e7b21223952129ef&query=${lat},${lon}&output=json&limit=1`
-            // )
-            //     .then((response) => response.text())
-            //     .then((addr) => printLoc(addr));
-            // testFunc(lat, lon);
-            // fetch(
-            //     `https://maps.googleapis.com/maps/api/geocode/JSON?latlng=${lat}, ${lon}&key=AIzaSyBYSkrqigkGOs0NMyMz21huI3opYdANXZQ`
-            // )
-            //     .then((response) => response.text())
-            //     .then((addr) => printLoc(addr));
-
+            // getLocation(52.38865429915277, -1.4619802145087764);
             return;
         }
     }

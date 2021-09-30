@@ -21,4 +21,3 @@ next on the list of things to add:
 Other things to add here include:
 
 -   Media query to show different display on Web – at the moment this is a mobile first app.
--   Zoom button to control map display. (Easy to do but takes time to test etc.)
