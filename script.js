@@ -134,7 +134,7 @@ function parseData(data) {
             let time = allBuses[bus].RecordedAtTime;
 
             displayMap(lat, lon, time);
-            // getLocation(52.38865429915277, -1.4619802145087764);
+            // getLocation(lat, lon);
             return;
         }
     }
