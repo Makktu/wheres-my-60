@@ -55,10 +55,12 @@ function loadCSS() {
                 "beforeend",
                 "<link id='dark-mode' rel='stylesheet' href='darkcss.css' />"
             );
-        toggleDark.textContent = "LIGHT";
+        toggleDark.innerHTML =
+            "<i id='toggle-colors' class='fas fa-toggle-on'></i>";
     } else {
         darkMode.parentNode.removeChild(darkMode);
-        toggleDark.textContent = "DARK";
+        toggleDark.innerHTML =
+            "<i id='toggle-colors' class='fas fa-toggle-off'></i>";
     }
 }
 
@@ -160,6 +162,8 @@ function wheresMySixty() {
 let travellingDirection = "";
 
 const toggleDark = document.getElementById("toggle-colors");
+
+toggleDark.innerHTML = "<i class='fas fa-toggle-off'></i>";
 
 const messageArea = document.querySelector(".message-area");
 
