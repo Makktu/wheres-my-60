@@ -24,4 +24,4 @@ Other things to add here include:
 
 01-Oct-2021
 
-- Finally fixed the problem where the app would display outdated data from the Stagecoach API. E.g. it's common for the displayed bus to be the last bus from the night before, rather than the most recent bus today, because Stagecoach don't reliably update their API. Needed to write a 'skip' section of code to recognise when this has happened and move onto the next bus. This is now working, hopefully reliably, and hopefully hasn't broken something else. Testing needed over the next couple of days' use of the app myself.
+-   Fixed the problem where the app would display outdated data from the Stagecoach API. E.g. showing the last bus on the route from the night before, rather than the most recent bus today (because Stagecoach don't reliably update their API). Added a 'skip' section of code to recognise when this has happened and simply move onto the next bus. This is now working, hopefully reliably – and hopefully hasn't broken something else. Testing needed over the next couple of days' use of the app myself.
