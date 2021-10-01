@@ -83,14 +83,19 @@ function displayMap(lat, lon, time) {
         time.lastIndexOf("+") - 3
     );
     let theHour = parseInt(theTime.substring(0, 2)) + 1;
-    if (assessTime() - theHour > 1) {
-        console.log("CONDITION HIT LINE 22");
-        return;
-    }
+
     if (assessTime() >= 21 || assessTime() <= 5) {
         infoLine.textContent = "The 60 is not running at this time";
         messageArea.innerHTML =
             "<div class='map-pic'><img src='img/newer-map-pic.png' /></div>";
+        return;
+    }
+    if (assessTime() - theHour > 1 || theHour > assessTime()) {
+        if (!skipToNext) {
+            skipToNext = true;
+            wheresMySixty();
+        }
+        // infoLine.textContent = "There may be a problem with Stagecoach data";
         return;
     }
 
@@ -123,6 +128,7 @@ function parseData(data) {
             allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude,
             allBuses[bus].RecordedAtTime
         );
+        // need to interpolate check on time here
         if (
             allBuses[bus].MonitoredVehicleJourney.DirectionRef ===
             travellingDirection
@@ -132,8 +138,12 @@ function parseData(data) {
             let lon =
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
-
-            displayMap(lat, lon, time);
+            if (!skipToNext) {
+                displayMap(lat, lon, time);
+            } else {
+                skipToNext = false;
+                continue;
+            }
             // getLocation(lat, lon);
             return;
         }
@@ -160,6 +170,8 @@ function wheresMySixty() {
 }
 
 let travellingDirection = "";
+
+let skipToNext = false;
 
 const toggleDark = document.getElementById("toggle-colors");
 
