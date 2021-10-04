@@ -77,7 +77,7 @@ function displayMap(lat, lon, time) {
     }
 
     theTime = theHour.toString() + theTime.substring(2);
-    // printLoc(lat, lon);
+    printLoc(lat, lon);
 
     infoLine.textContent = `At ${theTime} your 60 ${
         travellingDirection === "INBOUND" ? "to work " : "home "
