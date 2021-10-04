@@ -12,7 +12,7 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background-color: rgb(243, 239, 239);
+    background-color: rgb(242, 243, 239);
     color: rgb(15, 15, 15);
 }
 
@@ -23,6 +23,9 @@ body {
     align-items: center;
     flex-direction: column;
     font-weight: bold;
+    border: 3px black solid;
+    border-radius: 10px;
+    background-color: beige;
 }
 
 #heading {
