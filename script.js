@@ -13,26 +13,26 @@ function getLocation(lat, lon) {
         lon +
         "&localityLanguage=en";
     getApi(bdcApi);
-    // navigator.geolocation.getCurrentPosition(
-    //     (position) => {
-    //         bdcApi =
-    //             bdcApi +
-    //             "?latitude=" +
-    //             lat +
-    //             "&longitude=" +
-    //             lon +
-    //             "&localityLanguage=en";
-    //         getApi(bdcApi);
-    //     },
-    //     (err) => {
-    //         getApi(bdcApi);
-    //     },
-    //     {
-    //         enableHighAccuracy: true,
-    //         timeout: 5000,
-    //         maximumAge: 0,
-    //     }
-    // );
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            bdcApi =
+                bdcApi +
+                "?latitude=" +
+                lat +
+                "&longitude=" +
+                lon +
+                "&localityLanguage=en";
+            getApi(bdcApi);
+        },
+        (err) => {
+            getApi(bdcApi);
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0,
+        }
+    );
 }
 function getApi(bdcApi) {
     Http.open("GET", bdcApi);
@@ -95,7 +95,6 @@ function displayMap(lat, lon, time) {
             skipToNext = true;
             wheresMySixty();
         }
-        // infoLine.textContent = "There may be a problem with Stagecoach data";
         return;
     }
 
@@ -143,7 +142,7 @@ function parseData(data) {
                 skipToNext = false;
                 continue;
             }
-            // getLocation(lat, lon);
+            getLocation(lat, lon);
             return;
         }
     }
@@ -204,3 +203,6 @@ getButtonHome.addEventListener("click", () => {
     travellingDirection = "OUTBOUND";
     wheresMySixty();
 });
+
+const apiToken = config.MY_API_TOKEN;
+const key = config.SECRET_API_KEY;
