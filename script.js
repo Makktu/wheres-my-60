@@ -43,7 +43,7 @@ function printLoc(lat, lon) {
                 if (locationOfBus.length > 29) {
                     locationOfBus = locationOfBus.substring(0, 29);
                 }
-                infoLine.textContent = `At ${theTime}, ${locationOfBus}`;
+                infoLine.textContent = `${locationOfBus} (${theTime})`;
             }
         }
     };
