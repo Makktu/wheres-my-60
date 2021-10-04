@@ -128,7 +128,6 @@ function parseData(data) {
             allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude,
             allBuses[bus].RecordedAtTime
         );
-        // need to interpolate check on time here
         if (
             allBuses[bus].MonitoredVehicleJourney.DirectionRef ===
             travellingDirection
