@@ -49,7 +49,7 @@ function printLoc(lat, lon) {
     };
     xhttp.open(
         "GET",
-        `http://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
         true
     );
     xhttp.send();
