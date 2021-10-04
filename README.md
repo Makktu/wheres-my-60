@@ -25,3 +25,7 @@ Other things to add here include:
 01-Oct-2021
 
 -   Fixed the problem where the app would display outdated data from the Stagecoach API. E.g. showing the last bus on the route from the night before, rather than the most recent bus today (because Stagecoach don't reliably update their API). Added a 'skip' section of code to recognise when this has happened and simply move onto the next bus. This is now working, hopefully reliably – and hopefully hasn't broken something else. Testing needed over the next couple of days' use of the app myself.
+
+4 October 2021
+
+Started new branch, Location, where I will work on the streetname aspect.

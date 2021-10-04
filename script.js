@@ -1,51 +1,5 @@
 "use strict";
 
-// var result = document.getElementById("json-result");
-const Http = new XMLHttpRequest();
-function getLocation(lat, lon) {
-    var bdcApi = "https://api.bigdatacloud.net/data/reverse-geocode-client";
-
-    bdcApi =
-        bdcApi +
-        "?latitude=" +
-        lat +
-        "&longitude=" +
-        lon +
-        "&localityLanguage=en";
-    getApi(bdcApi);
-    // navigator.geolocation.getCurrentPosition(
-    //     (position) => {
-    //         bdcApi =
-    //             bdcApi +
-    //             "?latitude=" +
-    //             lat +
-    //             "&longitude=" +
-    //             lon +
-    //             "&localityLanguage=en";
-    //         getApi(bdcApi);
-    //     },
-    //     (err) => {
-    //         getApi(bdcApi);
-    //     },
-    //     {
-    //         enableHighAccuracy: true,
-    //         timeout: 5000,
-    //         maximumAge: 0,
-    //     }
-    // );
-}
-function getApi(bdcApi) {
-    Http.open("GET", bdcApi);
-    Http.send();
-    Http.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            console.log(this.responseText);
-        }
-    };
-}
-
-// *********************************************
-
 function loadCSS() {
     let darkMode = document.getElementById("dark-mode");
     if (!darkMode) {
@@ -70,15 +24,43 @@ function assessTime() {
     return rightNow;
 }
 
-function printLoc(addr) {
-    let newAddr = JSON.parse(addr);
-    console.log(newAddr);
-    let locationOfBus = newAddr.data[0].name;
-    infoLine.textContent = `Your 60 is at: ${locationOfBus}`;
+function printLoc(lat, lon) {
+    let places;
+    let xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            places = JSON.parse(this.responseText);
+            console.log(places);
+            if (places.address.road) {
+                locationOfBus = `${places.address.road}, ${places.address.suburb}`;
+            } else if (places.address.suburb) {
+                locationOfBus = `${places.address.suburb}`;
+            } else {
+                locationOfBus = null;
+            }
+
+            if (locationOfBus) {
+                if (locationOfBus.length > 29) {
+                    locationOfBus = locationOfBus.substring(0, 29);
+                }
+                infoLine.textContent = `At ${theTime}, ${locationOfBus}`;
+            } else {
+                infoLine.textContent = `At ${theTime} your 60 ${
+                    travellingDirection === "INBOUND" ? "to work " : "home "
+                } is here:`;
+            }
+        }
+    };
+    xhttp.open(
+        "GET",
+        `http://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
+        true
+    );
+    xhttp.send();
 }
 
 function displayMap(lat, lon, time) {
-    let theTime = time.substring(
+    theTime = time.substring(
         time.lastIndexOf("T") + 1,
         time.lastIndexOf("+") - 3
     );
@@ -95,14 +77,11 @@ function displayMap(lat, lon, time) {
             skipToNext = true;
             wheresMySixty();
         }
-        // infoLine.textContent = "There may be a problem with Stagecoach data";
         return;
     }
 
     theTime = theHour.toString() + theTime.substring(2);
-    infoLine.textContent = `At ${theTime} your 60 ${
-        travellingDirection === "INBOUND" ? "to work " : "home "
-    } is here:`;
+    printLoc(lat, lon);
 
     messageArea.innerHTML = "";
     messageArea.innerHTML = `<iframe width="340" height="420" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
@@ -128,7 +107,6 @@ function parseData(data) {
             allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude,
             allBuses[bus].RecordedAtTime
         );
-        // need to interpolate check on time here
         if (
             allBuses[bus].MonitoredVehicleJourney.DirectionRef ===
             travellingDirection
@@ -144,7 +122,6 @@ function parseData(data) {
                 skipToNext = false;
                 continue;
             }
-            // getLocation(lat, lon);
             return;
         }
     }
@@ -172,6 +149,10 @@ function wheresMySixty() {
 let travellingDirection = "";
 
 let skipToNext = false;
+
+let locationOfBus;
+
+let theTime;
 
 const toggleDark = document.getElementById("toggle-colors");
 
@@ -205,3 +186,6 @@ getButtonHome.addEventListener("click", () => {
     travellingDirection = "OUTBOUND";
     wheresMySixty();
 });
+
+const apiToken = config.MY_API_TOKEN;
+const key = config.SECRET_API_KEY;
