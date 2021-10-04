@@ -44,10 +44,6 @@ function printLoc(lat, lon) {
                     locationOfBus = locationOfBus.substring(0, 29);
                 }
                 infoLine.textContent = `At ${theTime}, ${locationOfBus}`;
-            } else {
-                infoLine.textContent = `At ${theTime} your 60 ${
-                    travellingDirection === "INBOUND" ? "to work " : "home "
-                } is here:`;
             }
         }
     };
@@ -82,6 +78,11 @@ function displayMap(lat, lon, time) {
 
     theTime = theHour.toString() + theTime.substring(2);
     printLoc(lat, lon);
+    if ((infoLine.textContent = "")) {
+        infoLine.textContent = `At ${theTime} your 60 ${
+            travellingDirection === "INBOUND" ? "to work " : "home "
+        } is here:`;
+    }
 
     messageArea.innerHTML = "";
     messageArea.innerHTML = `<iframe width="340" height="420" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
