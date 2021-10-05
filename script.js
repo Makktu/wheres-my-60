@@ -72,7 +72,11 @@ function displayMap(lat, lon, time) {
             "<div class='map-pic'><img src='img/newer-map-pic.png' /></div>";
         return;
     }
-    if (assessTime() - theHour > 1 || theHour > assessTime()) {
+    if (
+        assessTime() - theHour > 1 ||
+        theHour > assessTime() ||
+        (lat > 52.4072268987048 && travellingDirection === "INBOUND")
+    ) {
         if (!skipToNext) {
             skipToNext = true;
             wheresMySixty();

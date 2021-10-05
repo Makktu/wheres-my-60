@@ -29,3 +29,13 @@ Other things to add here include:
 4 October 2021
 
 Started new branch, Location, where I will work on the streetname aspect.
+
+5 October 2021
+
+Seem to have fixed the location printing problem. There was a free service after all – nominet – that enabled the reverse geocoding lookup via HTTPS that all mobile browsers seem to enforce. Other services (Google and many others) also offer it, but at a price. This app must be built entirely on free services.
+
+Today I'm working on two things:
+
+1. Appearance. It looks OK now but it could look better, and I need to work on my design skills.
+
+2. Refining the bus search algorithm. Sometimes the search returns a 60 bus that mainfestly isn't the 60 bus required. The problem occurs when Stagecoach have up to 4 buses out at once. (Usually there are only 2 buses, one Inbound, one Outbound.) E.g. a bus sitting in Little Heath, when the 60 the user wants is in Chelylesmore. A simple Latitude exclusion might do it. But what else might that break?
