@@ -43,17 +43,13 @@ function printLoc(lat, lon) {
                 if (locationOfBus.length > 29) {
                     locationOfBus = locationOfBus.substring(0, 29);
                 }
-                infoLine.textContent = `At ${theTime}, ${locationOfBus}`;
-            } else {
-                infoLine.textContent = `At ${theTime} your 60 ${
-                    travellingDirection === "INBOUND" ? "to work " : "home "
-                } is here:`;
+                infoLine.textContent = `${locationOfBus} (${theTime})`;
             }
         }
     };
     xhttp.open(
         "GET",
-        `http://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
         true
     );
     xhttp.send();
@@ -86,6 +82,10 @@ function displayMap(lat, lon, time) {
 
     theTime = theHour.toString() + theTime.substring(2);
     printLoc(lat, lon);
+
+    infoLine.textContent = `At ${theTime} your 60 ${
+        travellingDirection === "INBOUND" ? "to work " : "home "
+    } is here:`;
 
     messageArea.innerHTML = "";
     messageArea.innerHTML = `<iframe width="340" height="420" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=${
