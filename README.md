@@ -1,8 +1,8 @@
 # WHERE'S MY 60?
 
-# The most simple bus-tracking webapp in the world...
+## The most simple bus-tracking webapp in the world...
 
-## A one-page webapp, designed to perform just one task: to track the current location of the Stagecoach no. 60 bus service running from Willenhall, Coventry to University Hospital. and from University Hospital to Willenhall, Coventry.
+### A one-page webapp, designed to perform just one task: to track the current location of the Stagecoach no. 60 bus service running from Willenhall, Coventry to University Hospital, and from University Hospital to Willenhall, Coventry.
 
 ### 21 Sept 2021
 
