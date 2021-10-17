@@ -1,8 +1,8 @@
 # WHERE'S MY 60?
 
-# The most simple bus-tracking webapp possible!
+# The most simple bus-tracking webapp in the world...
 
-This one-page webapp will be designed to perform just one task: to track the current location of the Stagecoach no. 60 bus service from Warwick University to Arena Park.
+## A one-page webapp, designed to perform just one task: to track the current location of the Stagecoach no. 60 bus service running from Willenhall, Coventry to University Hospital. and from University Hospital to Willenhall, Coventry.
 
 ### 21 Sept 2021
 
@@ -39,3 +39,9 @@ Today I'm working on two things:
 1. Appearance. It looks OK now but it could look better, and I need to work on my design skills.
 
 2. Refining the bus search algorithm. Sometimes the search returns a 60 bus that mainfestly isn't the 60 bus required. The problem occurs when Stagecoach have up to 4 buses out at once. (Usually there are only 2 buses, one Inbound, one Outbound.) E.g. a bus sitting in Little Heath, when the 60 the user wants is in Chelylesmore. A simple Latitude exclusion might do it. But what else might that break?
+
+17 October 2021
+
+Discovered a bug whereby the search wheel displays continuously and refreshes itself, indicating mutiple calls to the API behind the scenes. This could potentially break the CORS proxy with too many requests. Need to remedy this.
+
+Also want to add the proper dark-mode map. And perhaps change the heading colours too.
