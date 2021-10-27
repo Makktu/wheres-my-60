@@ -205,5 +205,5 @@ getButtonHome.addEventListener("click", () => {
     wheresMySixty();
 });
 
-const apiToken = config.MY_API_TOKEN;
-const key = config.SECRET_API_KEY;
+// const apiToken = config.MY_API_TOKEN;
+// const key = config.SECRET_API_KEY;
