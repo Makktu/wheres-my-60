@@ -72,11 +72,10 @@ function displayMap(lat, lon, time) {
         assessTime() - theHour > 1 ||
         theHour > assessTime() ||
         (lat > 52.4072268987048 && travellingDirection === "INBOUND")
-    ) {
-        if (!skipToNext) {
-            skipToNext = true;
-            wheresMySixty();
-        }
+    )             wheresMySixty();
+
+    
+   
         return;
     }
 
