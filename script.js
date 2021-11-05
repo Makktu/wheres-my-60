@@ -119,12 +119,16 @@ function parseData(data) {
             let lon =
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
-            if (!skipToNext) {
-                displayMap(lat, lon, time);
-            } else {
-                skipToNext = false;
-                continue;
-            }
+            console.log("HERE");
+            
+                            displayMap(lat, lon, time);
+
+//             if (!skipToNext) {
+//                 displayMap(lat, lon, time);
+//             } else {
+//                 skipToNext = false;
+//                 continue;
+//             }
             return;
         }
     }
