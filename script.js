@@ -118,9 +118,8 @@ function parseData(data) {
             let lon =
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
-            console.log("HERE");
-            
-                            displayMap(lat, lon, time);
+            console.log("HERE");            
+            displayMap(lat, lon, time);
 
 //             if (!skipToNext) {
 //                 displayMap(lat, lon, time);
@@ -130,6 +129,7 @@ function parseData(data) {
 //             }
             return;
         }
+        }
     }
 }
 
@@ -138,19 +138,6 @@ function wheresMySixty() {
     messageArea.style = "font-size: 2.5rem;";
     messageArea.innerHTML =
         '<br><br><i class="fas fa-spinner fa-spin fa-3x fa-fw"></i>';
-
-    // ****************************************
-    // const Http = new XMLHttpRequest();
-    // const furl = "https://broken-wave-0766.johnmcna.workers.dev";
-    // Http.open("POST", furl);
-    // Http.setRequestHeader("Accept", "application/json");
-    // Http.setRequestHeader("Content-Type", "application/json");
-    // Http.send('{"test": "GP"}');
-
-    // Http.onreadystatechange = (e) => {
-    //     console.log(Http.responseText);
-    // };
-    // ****************************************
 
     const url =
         "https://api.codetabs.com/v1/proxy?quest=https://data.bus-data.dft.gov.uk/api/v1/datafeed?boundingBox=-1.42625%2C%2052.36964%2C%20-1.59502%2C%2052.45649&operatorRef=SCNH&lineRef=60&api_key=93b0e2fee16e881a1ccd4a49736d71c44b376744";
@@ -206,6 +193,3 @@ getButtonHome.addEventListener("click", () => {
     travellingDirection = "OUTBOUND";
     wheresMySixty();
 });
-
-// const apiToken = config.MY_API_TOKEN;
-// const key = config.SECRET_API_KEY;
