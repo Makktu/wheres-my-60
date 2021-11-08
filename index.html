@@ -12,6 +12,20 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- LEAFLET LINKS -->
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+            crossorigin=""
+        />
+        <script
+            defer
+            src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+            crossorigin=""
+        ></script>
+        <!-- LEAFLET LINKS -->
         <title>Where's My 60?</title>
     </head>
     <body>
@@ -20,8 +34,10 @@
 
             <div id="info">Tap your Work or Home bus</div>
 
-            <div class="message-area">
-                <div class="map-pic"><img src="img/newer-map-pic.png" /></div>
+            <div id="map" class="message-area">
+                <div class="map-pic">
+                    <img src="img/newer-map-pic.png" />
+                </div>
             </div>
             <div class="btn-area">
                 <i class="fas fa-bus fa-4x to-work"
@@ -32,8 +48,8 @@
                 >
             </div>
 
-            <div id="toggle-colors"></div>
-            <div class="dark-p">Dark</div>
+            <!-- <div id="toggle-colors"></div>
+            <div class="dark-p">Dark</div> -->
             <!-- <button id="toggle-colors">DARK</button> -->
 
             <!-- <footer>
@@ -43,7 +59,7 @@
                 >)
             </footer> -->
         </div>
-<!--         <script type="text/javascript" src="config.js"></script> -->
+        <script type="text/javascript" src="config.js"></script>
         <script src="script.js"></script>
         <script src="xmlToJson.js"></script>
     </body>
