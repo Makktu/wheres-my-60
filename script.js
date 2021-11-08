@@ -104,10 +104,19 @@ function parseData(data) {
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
 
-            if (!skipToNext) {
+            if (!skipToNext && !alreadySkipped) {
                 displayMap(lat, lon, time);
             } else {
+                if (alreadySkipped) {
+                    infoLine.textContent =
+                        "Bus not in range. Try again in 5 mins.";
+
+                    setTimeout(function () {
+                        location.reload();
+                    }, 5000);
+                }
                 skipToNext = false;
+                alreadySkipped = true;
                 continue;
             }
 
@@ -129,8 +138,15 @@ function wheresMySixty() {
 
     setTimeout(function () {
         if (!infoLine.textContent) {
-            infoLine.textContent =
-                "This is taking too long. There may be a problem.";
+            infoLine.textContent = "There may be a problem. Reloading...";
+            setTimeout(function () {
+                if (
+                    infoLine.textContent ===
+                    "There may be a problem. Reloading..."
+                ) {
+                    location.reload();
+                }
+            }, 2000);
         }
     }, 8000);
 }
@@ -152,6 +168,8 @@ const getButtonHome = document.querySelector(".to-home");
 const infoLine = document.getElementById("info");
 
 const mapPic = document.querySelector(".map-pic");
+
+let alreadySkipped = false;
 
 mapPic.addEventListener("click", () => {
     infoLine.textContent = "Not that one...";
