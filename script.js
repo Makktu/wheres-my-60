@@ -104,21 +104,10 @@ function parseData(data) {
                 allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
             let time = allBuses[bus].RecordedAtTime;
 
-            if (!skipToNext && !alreadySkipped) {
-                displayMap(lat, lon, time);
-            } else {
-                if (alreadySkipped) {
-                    infoLine.textContent =
-                        "Bus not in range. Try again in 5 mins.";
-
-                    setTimeout(function () {
-                        location.reload();
-                    }, 5000);
-                }
+            if (skipToNext) {
                 skipToNext = false;
-                alreadySkipped = true;
                 continue;
-            }
+            } else displayMap(lat, lon, time);
 
             return;
         }
@@ -169,7 +158,7 @@ const infoLine = document.getElementById("info");
 
 const mapPic = document.querySelector(".map-pic");
 
-let alreadySkipped = false;
+// let alreadySkipped = false;
 
 mapPic.addEventListener("click", () => {
     infoLine.textContent = "Not that one...";
