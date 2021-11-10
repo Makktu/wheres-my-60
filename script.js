@@ -96,17 +96,15 @@ function parseData(data) {
             travellingDirection
         ) {
             if (lat > 52.4072268987048 && skipToNext) {
-                infoLine.textContent = "Check back in a while.";
+                infoLine.textContent = "Check again in a while.";
                 break;
-                // setTimeout(function () {
-                //     location.reload();
-                // }, 4000);
             }
 
-            if (lat > 52.4072268987048) {
+            if (lat > 52.4072268987048 && travellingDirection === "INBOUND") {
                 skipToNext = true;
                 continue;
             }
+
             displayMap(lat, lon, time);
             break;
         }
