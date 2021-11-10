@@ -95,16 +95,17 @@ function parseData(data) {
             allBuses[bus].MonitoredVehicleJourney.DirectionRef ===
             travellingDirection
         ) {
+            if (lat > 52.4072268987048 && skipToNext) {
+                infoLine.textContent = "Check back in a while.";
+                break;
+                // setTimeout(function () {
+                //     location.reload();
+                // }, 4000);
+            }
+
             if (lat > 52.4072268987048) {
-                if (travellingDirection === "INBOUND" && !skipToNext) {
-                    skipToNext = true;
-                    continue;
-                } else {
-                    infoLine.textContent = "Check back in a while.";
-                    setTimeout(function () {
-                        location.reload();
-                    }, 4000);
-                }
+                skipToNext = true;
+                continue;
             }
             displayMap(lat, lon, time);
             break;
