@@ -95,9 +95,16 @@ function parseData(data) {
             allBuses[bus].MonitoredVehicleJourney.DirectionRef ===
             travellingDirection
         ) {
-            if (lat > 52.4072268987048 && skipToNext) {
-                infoLine.textContent = "Check again in a while.";
+            if (
+                lat > 52.4072268987048 &&
+                travellingDirection === "INBOUND" &&
+                skipToNext
+            ) {
+                infoLine.textContent = "No 60 in range yet. Check back soon.";
                 break;
+                // setTimeout(function () {
+                //     location.reload();
+                // }, 3000);
             }
 
             if (lat > 52.4072268987048 && travellingDirection === "INBOUND") {
@@ -125,6 +132,8 @@ function wheresMySixty() {
     setTimeout(function () {
         if (!infoLine.textContent) {
             infoLine.textContent = "There may be a problem. Reloading...";
+            console.log("131");
+
             setTimeout(function () {
                 if (
                     infoLine.textContent ===
