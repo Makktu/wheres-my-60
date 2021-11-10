@@ -51,14 +51,6 @@ function displayMap(lat, lon, time) {
         return;
     }
 
-    if (lat > 52.4072268987048 && travellingDirection === "INBOUND") {
-        if (!skipToNext) {
-            skipToNext = true;
-            wheresMySixty();
-            return;
-        }
-    }
-
     theTime = theHour.toString() + theTime.substring(2);
     printLoc(lat, lon);
 
@@ -94,22 +86,28 @@ function parseData(data) {
             allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude,
             allBuses[bus].RecordedAtTime
         );
+        let lat =
+            allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Latitude;
+        let lon =
+            allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
+        let time = allBuses[bus].RecordedAtTime;
         if (
             allBuses[bus].MonitoredVehicleJourney.DirectionRef ===
             travellingDirection
         ) {
-            let lat =
-                allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Latitude;
-            let lon =
-                allBuses[bus].MonitoredVehicleJourney.VehicleLocation.Longitude;
-            let time = allBuses[bus].RecordedAtTime;
-
-            if (skipToNext) {
-                skipToNext = false;
-                continue;
-            } else displayMap(lat, lon, time);
-
-            return;
+            if (lat > 52.4072268987048) {
+                if (travellingDirection === "INBOUND" && !skipToNext) {
+                    skipToNext = true;
+                    continue;
+                } else {
+                    infoLine.textContent = "Check back in a while.";
+                    setTimeout(function () {
+                        location.reload();
+                    }, 4000);
+                }
+            }
+            displayMap(lat, lon, time);
+            break;
         }
     }
 }
