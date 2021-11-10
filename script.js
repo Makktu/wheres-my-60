@@ -158,8 +158,6 @@ const infoLine = document.getElementById("info");
 
 const mapPic = document.querySelector(".map-pic");
 
-// let alreadySkipped = false;
-
 mapPic.addEventListener("click", () => {
     infoLine.textContent = "Not that one...";
     setTimeout(function () {
