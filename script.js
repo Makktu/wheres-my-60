@@ -42,7 +42,7 @@ function displayMap(lat, lon, time) {
         time.lastIndexOf("T") + 1,
         time.lastIndexOf("+") - 3
     );
-    let theHour = parseInt(theTime.substring(0, 2));
+    let theHour = parseInt(theTime.substring(0, 2)) + 1;
 
     if (assessTime() >= 21 || assessTime() <= 5) {
         infoLine.textContent = "The 60 is not running at this time";
