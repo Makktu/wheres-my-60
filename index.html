@@ -8,39 +8,106 @@
             integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
             crossorigin="anonymous"
         />
+
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- vvvvvv ionic CDN links -->
+        <script
+            type="module"
+            src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
+        ></script>
+        <script
+            nomodule
+            src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
+        ></script>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
+        />
+        <!-- ^^^^^^^ ionic CDN links -->
         <script type="module" src="./scripts/script.js"></script>
         <script src="./scripts/xmlToJson.js"></script>
         <title>Where Is The 60?</title>
     </head>
     <body>
-        <div class="container">
-            <div id="heading">Where Is The 60?</div>
+        <main>
+            <ion-app>
+                <ion-header>
+                    <ion-toolbar color="dark">
+                        <ion-title style="font-size: 1.4rem"
+                            >Where's The 60?</ion-title
+                        >
+                    </ion-toolbar>
+                </ion-header>
+                <div id="info">Tap your Work or Home bus</div>
 
-            <div id="info">Tap your Work or Home bus</div>
+                <ion-content>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col size-md="6" offset-md="3">
+                                <div id="map" class="message-area">
+                                    <div class="map-pic">
+                                        <img src="img/newer-map-pic.png" />
+                                    </div></div
+                            ></ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <ion-card-header>
+                        <ion-card-title>                          <div class="headers">                         
+                               <div style="text-align: center;"><div style="font-size: 130%;">⬆</div>Work</div> 
+                            </div>
+                        </ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
 
-            <div id="map" class="message-area">
-                <div class="map-pic">
-                    <img src="img/newer-map-pic.png" />
-                </div>
-            </div>
-            <div class="btn-area">
-                <i class="fas fa-bus fa-4x to-work"
-                    ><div class="msg work">WORK</div></i
-                >
-                <i class="fas fa-bus fa-4x to-home"
-                    ><div class="msg home">HOME</div></i
-                >
-            </div>
+                        <ion-item>
+                             <div class="btn-area">
+                        <div class="msg work">WORK</div></i
+                        >
+                        <div class="msg home">HOME</div></i
+                        >
+                    </div>
+                        </ion-item>
+                        <div class="ion-text-right">
+                            <ion-button
+                                color="danger"
+                                id="btn-phone-cancel"
+                                ><ion-icon
+                                    slot="start"
+                                    name="close-outline"
+                                ></ion-icon
+                                >Cancel</ion-button
+                            >
+                            <ion-button
+                                color="success"
+                                id="btn-phone-confirm"
+                                ><ion-icon
+                                    slot="start"
+                                    name="add-circle-outline"
+                                ></ion-icon
+                                >Search</ion-button
+                            >
+                        </div>
+                    </ion-card-content>
+                </ion-card>
 
-            <footer>
-                Created by John McNamara (<a
-                    href="https://github.com/Makktu/wheres-my-60"
-                    >source code</a
-                >)
-            </footer>
-        </div>
+                   
+                    <ion-accordion value="first">
+                        <ion-item slot="header" color="dark">
+                            <ion-icon name="enter-sharp"></ion-icon
+                            ><ion-label> About</ion-label>
+                        </ion-item>
+                        <div class="footer">
+                            Created by John McNamara (<a
+                                href="https://github.com/Makktu/wheres-my-60"
+                                >source code</a
+                            >)
+                        </div>
+                    </ion-accordion>
+                </ion-content>
+                <ion-alert-controller></ion-alert-controller>
+            </ion-app>
+        </main>
     </body>
 </html>

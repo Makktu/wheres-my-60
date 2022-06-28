@@ -1,8 +1,28 @@
+:root {
+  /* --ion-background-color: #e2edff; */
+  --ion-background-color: linear-gradient(
+      29deg,
+      rgba(2, 0, 36, 1) 12%,
+      rgb(74, 74, 100) 56%,
+      rgb(31, 36, 37) 93%
+  );
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255, 255, 255;
+  --ion-overlay-background-color: #01060f;
+  --ion-overlay-color: white;
+  /* --ion-background: url("./assets/the_search.svg"); */
+}
+
 body {
   background: slategray;
+  color: yellow;
 }
 
 #heading {
   font-size: 3rem;
+  color: whitesmoke;
+}
+
+p {
   color: whitesmoke;
 }/*# sourceMappingURL=sass.css.map */
