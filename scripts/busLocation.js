@@ -1,37 +1,6 @@
-// export all as etc
+import { displayMap } from "./displayMap.js";
 
-function printLoc(lat, lon) {
-    let places;
-    let xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            places = JSON.parse(this.responseText);
-            console.log(places);
-            if (places.address.road) {
-                locationOfBus = `${places.address.road}, ${places.address.suburb}`;
-            } else if (places.address.suburb) {
-                locationOfBus = `${places.address.suburb}`;
-            } else {
-                locationOfBus = null;
-            }
-
-            if (locationOfBus) {
-                if (locationOfBus.length > 29) {
-                    locationOfBus = locationOfBus.substring(0, 29);
-                }
-                infoLine.textContent = `${locationOfBus} (${theTime})`;
-            }
-        }
-    };
-    xhttp.open(
-        "GET",
-        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
-        true
-    );
-    xhttp.send();
-}
-
-function wheresMySixty() {
+function wheresMySixty(travellingDirection) {
     infoLine.textContent = "";
     messageArea.style = "font-size: 2.5rem;";
     messageArea.innerHTML =
@@ -40,7 +9,7 @@ function wheresMySixty() {
         "https://api.codetabs.com/v1/proxy?quest=https://data.bus-data.dft.gov.uk/api/v1/datafeed?boundingBox=-1.42625%2C%2052.36964%2C%20-1.59502%2C%2052.45649&operatorRef=SCNH&lineRef=60&api_key=93b0e2fee16e881a1ccd4a49736d71c44b376744";
     fetch(url)
         .then((response) => response.text())
-        .then((data) => parseData(data));
+        .then((data) => parseData(data, travellingDirection));
 
     setTimeout(function () {
         if (!infoLine.textContent) {
@@ -59,8 +28,7 @@ function wheresMySixty() {
     }, 8000);
 }
 
-function parseData(data) {
-    console.log(data);
+function parseData(data, travellingDirection) {
     const jsonData = xmlToJson.parse(data);
     const allBuses =
         jsonData.Siri.ServiceDelivery.VehicleMonitoringDelivery.VehicleActivity;
@@ -92,18 +60,18 @@ function parseData(data) {
             ) {
                 infoLine.textContent = "No 60 in range yet. Check back soon.";
                 break;
-                // setTimeout(function () {
-                //     location.reload();
-                // }, 3000);
             }
 
             if (lat > 52.4072268987048 && travellingDirection === "INBOUND") {
                 skipToNext = true;
                 continue;
             }
+            console.log("PIOUFIYFIYD");
 
             displayMap(lat, lon, time);
             break;
         }
     }
 }
+
+export { wheresMySixty, parseData };
